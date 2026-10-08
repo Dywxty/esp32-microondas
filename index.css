@@ -1,0 +1,197 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #f5f6fa;
+  background: #11131a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+.pagina {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgb(72 64 130 / 24%), transparent 55%),
+    #11131a;
+}
+
+.painel {
+  width: min(100%, 390px);
+  padding: 38px 30px 26px;
+  text-align: center;
+  background: #1b1e28;
+  border: 1px solid #2b2f3c;
+  border-radius: 26px;
+  box-shadow: 0 24px 70px rgb(0 0 0 / 32%);
+}
+
+.icone-microondas {
+  position: relative;
+  width: 64px;
+  height: 50px;
+  margin: 0 auto 25px;
+  border: 2px solid #a99bff;
+  border-radius: 10px;
+}
+
+.icone-microondas::before {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 34px;
+  height: 32px;
+  content: "";
+  border: 1px solid #7164bf;
+  border-radius: 5px;
+}
+
+.icone-microondas span {
+  position: absolute;
+  top: 11px;
+  right: 7px;
+  width: 4px;
+  height: 4px;
+  background: #a99bff;
+  border-radius: 50%;
+  box-shadow: 0 10px #a99bff, 0 20px #a99bff;
+}
+
+.subtitulo {
+  margin: 0 0 8px;
+  color: #a99bff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+
+.descricao {
+  margin: 10px 0 28px;
+  color: #9da1af;
+  font-size: 14px;
+}
+
+.controles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.botao {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 14px;
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    filter 150ms ease;
+}
+
+.botao:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.botao:focus-visible,
+select:focus-visible {
+  outline: 3px solid #c7beff;
+  outline-offset: 3px;
+}
+
+.botao-tempo {
+  gap: 9px;
+  color: #e5e1ff;
+  background: #302b4d;
+}
+
+.botao-tempo strong {
+  font-size: 18px;
+}
+
+.botao-ligar {
+  color: #14151a;
+  background: #a99bff;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+.seletor-tempo {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 16px;
+  text-align: left;
+  background: #242733;
+  border: 1px solid #343847;
+  border-radius: 14px;
+}
+
+.seletor-tempo label {
+  color: #c4c6d0;
+  font-size: 13px;
+}
+
+.seletor-tempo select {
+  width: 100%;
+  padding: 11px 12px;
+  color: #f5f6fa;
+  background: #1b1e28;
+  border: 1px solid #414657;
+  border-radius: 9px;
+}
+
+.status {
+  display: flex;
+  min-height: 18px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 22px 0 0;
+  color: #969aa8;
+  font-size: 12px;
+}
+
+.status-ponto {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  background: #e2a95b;
+  border-radius: 50%;
+}
+
+.status-ponto.conectado {
+  background: #64d69a;
+  box-shadow: 0 0 10px rgb(100 214 154 / 45%);
+}
+
+@media (max-width: 380px) {
+  .painel {
+    padding: 32px 20px 24px;
+  }
+}
