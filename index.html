@@ -13,7 +13,6 @@
       body {
         display: grid;
         min-width: 320px;
-        min-height: 100vh;
         margin: 0;
         padding: 24px;
         place-items: center;
@@ -242,11 +241,11 @@
     <script>
       // Configure estes valores conforme o broker e o firmware do ESP32.
       const MQTT = {
-        host: "SEU_BROKER",
+        host: "broker.hivemq.com",
         port: 8884,
         path: "/mqtt",
-        tempoTopic: "microondas/tempo",
-        ligarTopic: "microondas/ligar",
+        tempoTopic: "senai510/lttl/microondas/tempo",
+        ligarTopic: "senai510/lttl/microondas/ligar",
         useSSL: true,
       };
 
@@ -283,9 +282,16 @@
         }
 
         try {
-          clienteMqtt.send(MQTT.tempoTopic, campoTempo.value, 1, false);
-          clienteMqtt.send(MQTT.ligarTopic, "LIGAR", 1, false);
-          atualizarStatus(`Contagem iniciada: ${campoTempo.value} segundos`, true);
+          const mensagemTempo = new Paho.MQTT.Message(campoTempo.value);
+          mensagemTempo.destinationName = MQTT.tempoTopic;
+          mensagemTempo.qos = 1;
+          clienteMqtt.send(mensagemTempo);
+
+          const mensagemLigar = new Paho.MQTT.Message("LIGAR");
+          mensagemLigar.destinationName = MQTT.ligarTopic;
+          mensagemLigar.qos = 1;
+          clienteMqtt.send(mensagemLigar);
+          atualizarStatus("Comando enviado ao broker; o ESP32 ainda não confirmou.", true);
         } catch (erro) {
           atualizarStatus(`Erro ao enviar comando: ${erro.message}`);
         }
